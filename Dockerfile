@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 LABEL maintainer="docker@gavinharrison.me.uk"
 LABEL version="1.0"
-LABEL description="This is an image for an angular development enviroment."
+LABEL description="This is a docker image for a local angular cli development enviroment."
 
 ENV DEBIAN_FRONTEND=noninteractive
 
