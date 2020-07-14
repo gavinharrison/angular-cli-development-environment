@@ -8,7 +8,7 @@ whenthe container starts it will automaticaly run the [docker-entrypoint.sh](doc
 
     docker run -p 4200:4200 -it --entrypoint /bin/bash --rm --name project-name-here -v ${PWD}:/project gavinharrison/angular
 
-From here you can run ng
+From here you can run `ng new` to create a new angular project.
 
 If you start the container without setting the --entrypoint to /bin/bash.
 
@@ -40,3 +40,29 @@ Now to execute ng commands open another terminal and run the following. This wil
 ## Troubleshooting
 
 If you are getting a unable to connect or connection was dropped then make sure that the `ng serve` command has the argument `--host 0.0.0.0` this will attach the web server to the container to be accessible externaly of the container as by default the web server restricts to localhost only connections and as we are connecting through the docker proxy we are not localhost hence the reason to opening it to all connections.
+
+If you get the below error this is because the docker-entrypoint.sh script was unable to locate the package.json file during the instalation of the node_modules.
+
+    $docker run -p 4200:4200 -it --rm --name project-name-here -v ${PWD}:/project gavinharrison/angular /bin/bash
+
+    npm WARN saveError ENOENT: no such file or directory, open '/project/package.json'
+    npm notice created a lockfile as package-lock.json. You should commit this file.
+    npm WARN enoent ENOENT: no such file or directory, open '/project/package.json'
+    npm WARN project No description
+    npm WARN project No repository field.
+    npm WARN project No README data
+    npm WARN project No license field.
+
+    up to date in 0.414s
+    found 0 vulnerabilities
+
+    npm ERR! code ENOENT
+    npm ERR! syscall open
+    npm ERR! path /project/package.json
+    npm ERR! errno -2
+    npm ERR! enoent ENOENT: no such file or directory, open '/project/package.json'
+    npm ERR! enoent This is related to npm not being able to find a file.
+    npm ERR! enoent 
+
+    npm ERR! A complete log of this run can be found in:
+    npm ERR!     /root/.npm/_logs/2020-07-14T02_21_40_542Z-debug.log
