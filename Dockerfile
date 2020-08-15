@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # RUN npm -g config set user root && npm install -g @angular/cli && ng v
 RUN npm install --unsafe-perm -g @angular/cli && ng v
 
-COPY ./docker-entrypoint.sh /
+COPY ./src/docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 WORKDIR /project/
