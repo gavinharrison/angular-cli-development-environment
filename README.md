@@ -5,7 +5,7 @@ This docker image is a fully fledged angular cli development environment without
 - GitHub : <https://github.com/gavinharrison/angular-cli-development-environment>
 - Dcker Hub : <https://hub.docker.com/r/gavinharrison/angular-cli-development-environment>
 
-whenthe container starts it will automaticaly run the [docker-entrypoint.sh](src/docker-entrypoint.sh) script in this script it runs npm install and then npm start.
+when the container starts it will automaticaly run the [docker-entrypoint.sh](src/docker-entrypoint.sh) script in this script it runs npm install and then npm start.
 
 ## Setup of new project
 
